@@ -1,0 +1,11 @@
+commands to create pern project
+-mkdir frontend  
+-mkdir backend
+-npm init -y
+-npm install express dotenv cors helmet morgan @neondatabase/serverless @arcjet/node
+
+-npm i nodemon -D
+edit this after installing nodemon:
+"scripts": {
+    "dev": "nodemon backend/server.js"
+  },
