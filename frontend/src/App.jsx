@@ -7,7 +7,7 @@ import Navbar from "./components/Navbar";
 
 function App() {
   return (
-    <div className="min-h-screen bg-base-200 transition-colors duration-300">
+    <div className="min-h-screen bg-base-200 transition-colors duration-300" data-theme="coffee">
       <Navbar />
        
       <Routes>
