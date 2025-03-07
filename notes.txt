@@ -9,3 +9,9 @@ edit this after installing nodemon:
 "scripts": {
     "dev": "nodemon backend/server.js"
   },
+
+  install inside frontend folder
+  npm install -D tailwindcss@3 postcss autoprefixer npx tailwindcss init -p
+  npm i -D daisyui@latest
+  npm i react-hot-toast react-router-dom axios zustand lucide-react
+  

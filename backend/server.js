@@ -24,25 +24,29 @@ app.use(morgan("dev")); // this will log the request
 app.use(async (req, res, next) => {
     try {
         const decision = await aj(req,{
-            requested:1
+            requested:1 //each request is 1 token
             }    
         );
         if(decision.isDenied()){
             if(decision.isRateLimit()){
-                return res.status(429).json({
-                    error:"Too many requests"});
+                return res.status(429).json({error:"Too many requests"});
             } else if(decision.isBot()){
-                return res.status(403).json({
-                    error:"You are a bot"
-                });
+                return res.status(403).json({error:"You are a bot"});
             } else {
-                return res.status(403).json({
-                    error:"You are not allowed to access this resource"
-                });
+                return res.status(403).json({error:"You are not allowed to access this resource"});
             }
+            return;
         }
-    } catch (error) {
-        
+
+        // check or spoofed bots
+        if(decision.results.some((result) => result.reason.isBot() && result.reason.isSpoofed())){
+            res.status(403).json({error:"You are a spoofed bot"});
+            return;
+        }
+        next();
+    }catch(error){
+        console.log("Error in arcjet", error);
+        next(error);
     }
 
 });
