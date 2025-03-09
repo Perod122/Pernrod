@@ -1,24 +1,30 @@
-import e from "cors";
 import { create } from "zustand";
 import axios from "axios";
 
 const BASE_URL = "http://localhost:3000";
-export const useProductStore = create((set,get) => ({
-    //products state
-    products: [],
-    loading:false,
-    error:null,
 
+export const useProductStore = create((set, get) => ({
+    // State variables
+    products: [],
+    loading: false,
+    error: null,
+
+    // Fetch products from API
     fetchProducts: async () => {
-        set({loading:true});
+        set({ loading: true });
+
         try {
-            const response = await axios.get(`${BASE_URL}/api/products`)
-            set({products: response.data.data,error:null});
+            const response = await axios.get(`${BASE_URL}/api/products`);
+            set({ products: response.data.data, error: null });
         } catch (err) {
-            if(err.status == 429) set({error:"Too many requests. Please try again later.", products:[]});
-            else set({error:"An error as occurred. Please try again later.", products:[]});
-        }finally{
-            set({loading:false});
+            const errorMessage =
+                err?.response?.status === 429
+                    ? "Too many requests. Please try again later."
+                    : "An error has occurred. Please try again later.";
+
+            set({ error: errorMessage, products: [] });
+        } finally {
+            set({ loading: false });
         }
-    }
+    },
 }));
