@@ -1,4 +1,4 @@
-commands to create pern project
+//commands to create pern project
 -mkdir frontend  
 -mkdir backend
 -npm init -y
@@ -15,3 +15,6 @@ edit this after installing nodemon:
   npm i -D daisyui@latest
   npm i react-hot-toast react-router-dom axios zustand lucide-react
   
+  //kill port 3000
+  netstat -ano | findstr :3000
+  taskkill /PID <PID> /F
