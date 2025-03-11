@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useProductStore } from "../store/useProductStore";
 import { useNavigate, useParams } from "react-router-dom";
-import { ArrowLeftIcon } from "lucide-react";
-import e from "cors";
+import { ArrowLeftIcon, SaveIcon, Trash2Icon } from "lucide-react";
+import e from "cors";     
 
 function ProductPage(){
     const {
@@ -20,6 +20,13 @@ function ProductPage(){
         useEffect(() => {
             fetchProduct(id);
         }, [fetchProduct, id]);
+
+        const handleDelete = async () => {
+            if (window.confirm("Are you sure you want to delete this product?")) {
+                await deleteProduct(id);
+                navigate("/");
+            }
+        };
 
         if (loading) {
             return (
@@ -44,7 +51,7 @@ function ProductPage(){
             </button>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="rounded-lg overflow-hidden shadow-lg bg-base-100">
-                    <img src={currentProduct.image} alt={currentProduct.name} className="size-full object-cover" />
+                    <img src={currentProduct?.image} alt={currentProduct?.name} className="size-full object-cover" />
                 </div>
                 {/* PRODUCT FORM */}
                 <div className="card bg-base-100 shadow-lg">
@@ -93,6 +100,23 @@ function ProductPage(){
                             value={formData.image} 
                             onChange={(e) => setFormData({...formData, image: e.target.value})}
                             />
+                        </div>
+                        {/* SUBMIT BUTTON */}
+                        <div className="flex justify-between mt-8">
+                            <button type="button" className="btn btn-error" onClick={handleDelete}>
+                                <Trash2Icon className="size-5 mr-2" />
+                                Delete Product
+                            </button>
+                            <button type="submit" className="btn btn-primary" disabled={loading || !formData.name || !formData.price || !formData.image}>
+                                {loading ? (
+                                    <div className="loading loading-spinner loading-sm"/>
+                                ) : (
+                                    <>
+                                    <SaveIcon className="size-5 mr-2" />
+                                    Save Changes
+                                    </>
+                                )}
+                            </button>
                         </div>
                         </form>
                     </div>

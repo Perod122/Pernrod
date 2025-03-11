@@ -1,4 +1,4 @@
-import { ShoppingCartIcon } from "lucide-react";
+import { LetterText, LucideTabletSmartphone, ShoppingCartIcon } from "lucide-react";
 import { Link, useResolvedPath } from "react-router-dom";
 import ThemeSelector from "./ThemeSelector";
 
@@ -15,8 +15,8 @@ function Navbar() {
                         <div className="flex-1 lg:flex-none">
                             <div className="flex items-stretch">
                                 <Link to="/" className="hover:opacity-80 transition-opacity">
-                                    <div className="flex items-center">
-                                        <ShoppingCartIcon className="size-9 text-primary" />
+                                    <div className="flex items-center space-x-2">
+                                        <LucideTabletSmartphone className="size-9 text-primary" />
                                         <span className="font-semibold font-mono tracking-widest text-2xl bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
                                             PERODSTORE
                                         </span>
