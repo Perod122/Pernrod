@@ -4,6 +4,7 @@
 -npm init -y
 -npm install express dotenv cors helmet morgan @neondatabase/serverless @arcjet/node
 
+//install nodemon
 -npm i nodemon -D
 edit this after installing nodemon:
 "scripts": {
@@ -18,4 +19,3 @@ edit this after installing nodemon:
   //kill port 3000
   netstat -ano | findstr :3000
   taskkill /PID <PID> /F
- 1
