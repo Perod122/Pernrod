@@ -18,3 +18,4 @@ edit this after installing nodemon:
   //kill port 3000
   netstat -ano | findstr :3000
   taskkill /PID <PID> /F
+ 1
