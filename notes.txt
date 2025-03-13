@@ -16,6 +16,6 @@ edit this after installing nodemon:
   npm i -D daisyui@latest
   npm i react-hot-toast react-router-dom axios zustand lucide-react
   
-  //kill port 3000
+  //kill port 3000 if has error port is being used
   netstat -ano | findstr :3000
   taskkill /PID <PID> /F
