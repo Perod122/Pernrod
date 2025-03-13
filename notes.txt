@@ -4,7 +4,7 @@
 -npm init -y
 -npm install express dotenv cors helmet morgan @neondatabase/serverless @arcjet/node
 
-//install nodemon
+//install nodemon for continuos backend rendering
 -npm i nodemon -D
 edit this after installing nodemon:
 "scripts": {
