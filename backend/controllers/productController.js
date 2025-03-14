@@ -17,7 +17,7 @@ export const getProducts = async (req, res) => {
 
 // function to create a product
 export const createProduct = async (req, res) => {
-    
+        // check if all fields are provided
         const { name, image, price } = req.body;
         if (!name || !image || !price) {
             return res.status(400).json({success:false, message: "Please provide all fields"});}
