@@ -68,6 +68,7 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
+// create a table in the database
 async function initDB() {
   try {
     await sql`

@@ -1,5 +1,6 @@
 import {sql} from "../config/db.js";
 
+// function to get all products
 export const getProducts = async (req, res) => {
     try {
         const products = await sql`
@@ -14,6 +15,7 @@ export const getProducts = async (req, res) => {
     }
 };
 
+// function to create a product
 export const createProduct = async (req, res) => {
     
         const { name, image, price } = req.body;
@@ -34,6 +36,8 @@ export const createProduct = async (req, res) => {
     }
 };
 
+
+// function to get a product
 export const getProduct = async (req, res) => {
     const { id } = req.params;
     try {
