@@ -13,6 +13,8 @@ dotenv.config();
 //declare a variable to store the express function
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+// declare a variable to store the current directory
 const __dirname = path.resolve();
 
 app.use(express.json());
